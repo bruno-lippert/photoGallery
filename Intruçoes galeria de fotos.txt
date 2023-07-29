@@ -1,0 +1,27 @@
+criar databse no firebase
+criar front
+criar pasta libs com firebase.ts
+criar arq .env.local
+criar types Photo com name e url
+criar services com photo.ts,importar ref, listAll e getDownloadURL from database/storage{
+function getAll, para retornar uma arrayList com as imagens
+fazer referencia ao caminho em que as images estão
+armazenar em uma variavel as fotos com listAll(ref)
+gerar  photoUrl com getDownloadURL 
+}
+
+precisa sercriado um handleFormSubmit, função para enviar o formulárioque recebe um evento com o type FormEvent, que precisa ser importado do React (e:FromEvent<HTMLFormElement>){e.preventDefault()}
+
+criar função insert para inserir dados no firebase {
+criar validação para verificar se o qrquivoé valido
+fazer um ref para a pasta image com o id que deve ser gerado com o uuid(impport a4 as createId)
+let newFile = ref(sorage, `ìmages/${randomName}`
+}
+uploadBytes importar
+
+
+Paleta de cores
+bebe azul - #68BBE3
+Gruta Azul - #0E86D4
+Azul - #055C9D
+Navy Blue - #003060
