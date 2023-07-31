@@ -1,7 +1,40 @@
 import styled from 'styled-components';
 
 export const MainContainer = styled.main`
-
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    background-color: #003060;
+    height: 100vh;
 `;
 
-export {}
+export const Header = styled.header`
+    color: #fff;
+    font-size: 2rem;
+    margin: 30px 0;
+`;
+
+export const UploadFile = styled.div`
+    background-color: #055C9D;
+    height: 50px;
+    width: 70%;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    input[type=submit] {
+        border-radius: 10px;
+        font-size: 1rem;
+        background-color: #0E86D4;
+        border: none
+    }
+`;
+
+
+export const Section = styled.section`
+    width: 70%;
+`;
+
+export { }
