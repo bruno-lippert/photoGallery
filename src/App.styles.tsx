@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 export const MainContainer = styled.main`
     display: flex;
@@ -32,9 +32,18 @@ export const UploadFile = styled.div`
     }
 `;
 
-
-export const Section = styled.section`
+export const MainContent = styled.section`
     width: 70%;
+    margin: 30px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+`;
+
+export const PhotoGrid = styled.div`
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
 `;
 
 export { }

@@ -1,4 +1,5 @@
 import React from 'react'
+import * as S from './styles'
 
 type Props = {
     name: string,
@@ -7,10 +8,9 @@ type Props = {
 
 export default function PhotoItem({name, url}: Props) {
   return (
-    <div>
+    <S.PhotoItem>
         <img src={url} alt={name} />
-        {name}
-    </div>
+    </S.PhotoItem>
     
   )
 }

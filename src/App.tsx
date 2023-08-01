@@ -16,7 +16,9 @@ export default function App() {
   }, [])
 
   const getPhotos = async () => {
+    setLoadingImages(true)
     setPhotos(await Photos.getAll())
+    setLoadingImages(false)
   }
 
   return (
@@ -28,14 +30,21 @@ export default function App() {
         <input type="file" name="image" />
         <input type="submit" value="Enviar" />
       </S.UploadFile>
-      <S.Section>
+      <S.MainContent>
 
-        {!loadingImages && photos.length > 0 && photos.map((item, index) => (
-          <PhotoItem key={index} name={item.name} url={item.url}></PhotoItem>
-        ))}
+        {loadingImages && <div>Carregando...</div>}
+
+        {!loadingImages && photos.length > 0 && 
+        <S.PhotoGrid>
+            {photos.map((item, index) => (
+          
+            <PhotoItem key={index} name={item.name} url={item.url}></PhotoItem>
+          
+        ))}</S.PhotoGrid>
+            }
 
 
-      </S.Section>
+      </S.MainContent>
     </S.MainContainer>
   )
 }
