@@ -1,6 +1,8 @@
-import {ref, listAll, getDownloadURL} from 'firebase/storage';
+import {ref, listAll, getDownloadURL, uploadBytes, deleteObject} from 'firebase/storage';
 import { Photo } from '../types/Photo';
 import { storage } from '../libs/firebase';
+import {v4 as createId} from 'uuid';
+import { error } from 'console';
 
 export async function getAll() {
     const list: Photo[] = []
@@ -15,4 +17,27 @@ export async function getAll() {
     }
 
     return list
+}
+
+export const uploadFile = async (file: File) => {
+    if([`image/jpg`, `image/jpeg`, `image/png`].includes(file.type)) {
+
+        const imageId = createId()
+        const newFile = ref(storage, `images/${imageId}`)
+        const upload = await uploadBytes(newFile, file)
+        const photoUrl = await getDownloadURL(upload.ref)
+
+        return { name: upload.ref.name, url:photoUrl} as Photo
+    } else {
+        return new Error('Tipo de arquivo inválido!')
+    }
+}
+
+export const deletePhoto = async (photo: Photo) => {
+    const photoRef = ref(storage, `images/${photo.name}`)
+    deleteObject(photoRef).then(() => {
+        alert(`Arquivo deletado!`)
+    }).catch((error) => {
+        alert(`Erro ao excluir foto!`)
+    })
 }

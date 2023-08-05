@@ -15,7 +15,7 @@ export const Header = styled.header`
     margin: 30px 0;
 `;
 
-export const UploadFile = styled.div`
+export const UploadFile = styled.form`
     background-color: #055C9D;
     height: 50px;
     width: 70%;
@@ -23,12 +23,14 @@ export const UploadFile = styled.div`
     display: flex;
     align-items: center;
     gap: 10px;
+    padding-left: 15px;
 
     input[type=submit] {
         border-radius: 10px;
         font-size: 1rem;
         background-color: #0E86D4;
-        border: none
+        border: none;
+        cursor: pointer;
     }
 `;
 
@@ -44,6 +46,7 @@ export const MainContent = styled.section`
 export const PhotoGrid = styled.div`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
 `;
 
 export { }

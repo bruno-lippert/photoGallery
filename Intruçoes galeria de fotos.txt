@@ -13,7 +13,7 @@ gerar  photoUrl com getDownloadURL
 precisa sercriado um handleFormSubmit, função para enviar o formulárioque recebe um evento com o type FormEvent, que precisa ser importado do React (e:FromEvent<HTMLFormElement>){e.preventDefault()}
 
 criar função insert para inserir dados no firebase {
-criar validação para verificar se o qrquivoé valido
+criar validação para verificar se o arquivo é valido
 fazer um ref para a pasta image com o id que deve ser gerado com o uuid(impport a4 as createId)
 let newFile = ref(sorage, `ìmages/${randomName}`
 }
