@@ -13,6 +13,7 @@ export const PhotoItem = styled.div`
 img {
     width: 100%;
     border-radius: 10px;
+   // max-height: 200px;
 }
 `;
 

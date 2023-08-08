@@ -80,7 +80,7 @@ export default function App() {
         <input type="file" name="image" />
         <input type="submit" value="Enviar" />
 
-        {loadingUpload && <div>Carregando...</div>}
+        {loadingUpload && <div>Enviando...</div>}
 
       </S.UploadFile>
       <S.MainContent>
