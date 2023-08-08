@@ -7,7 +7,7 @@ type Props = {
 
 export default function Modal({text}: Props) {
   return (
-    <S.Modal>
+    <S.Modal className='modal'>
         {text}
     </S.Modal>
   )

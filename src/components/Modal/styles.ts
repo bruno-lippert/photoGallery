@@ -9,4 +9,8 @@ export const Modal = styled.div`
     padding: 10px;
     text-align: center;
     border-radius: 10px;
+
+    @media (max-width: 350px) {
+        width: 25%;
+    }
 `;
