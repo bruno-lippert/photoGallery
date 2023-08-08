@@ -36,8 +36,7 @@ export const uploadFile = async (file: File) => {
 export const deletePhoto = async (photo: Photo) => {
     const photoRef = ref(storage, `images/${photo.name}`)
     deleteObject(photoRef).then(() => {
-        alert(`Arquivo deletado!`)
     }).catch((error) => {
-        alert(`Erro ao excluir foto!`)
+        alert(`Erro ao deletar foto!`)
     })
 }

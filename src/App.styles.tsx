@@ -7,6 +7,26 @@ export const MainContainer = styled.main`
     flex-direction: column;
     background-color: #003060;
     height: 100vh;
+
+    @media (max-width: 1200px) {
+        .photoGrid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+    @media (max-width: 700px) {
+        .photoGrid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    @media (max-width: 500px) {
+        .photoGrid {
+            grid-template-columns: repeat(1, 1fr);
+            padding-bottom: 40px;
+        }
+        .uploadFile {
+            padding: 10px 10px;
+        }
+    }
 `;
 
 export const Header = styled.header`
@@ -22,8 +42,11 @@ export const UploadFile = styled.form`
     border-radius: 10px;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
     padding-left: 15px;
+    padding-right: 15px;
+    flex-wrap: wrap;
 
     input[type=submit] {
         border-radius: 10px;
