@@ -36,7 +36,6 @@ export const Header = styled.header`
 
 export const UploadFile = styled.form`
     background-color: #055C9D;
-    //height: 50px;
     width: 70%;
     border-radius: 10px;
     display: flex;
@@ -44,6 +43,7 @@ export const UploadFile = styled.form`
     gap: 10px;
     padding: 10px 15px;
     flex-wrap: wrap;
+    color: #fff;
 
     input[type=submit] {
         border-radius: 10px;
@@ -69,10 +69,26 @@ export const UploadFile = styled.form`
         border-radius: 10px;
         cursor: pointer;
         padding: 5px;
-    }
+        max-width: 200px;
+        overflow: auto;
+        white-space: nowrap;
+        scrollbar-width: none;
+        scrollbar-color: red green;
 
-    .custom-file-label:hover {
-        background-color: #68BBE3;
+        &::-webkit-scrollbar {
+            height: 10px;
+            cursor: cell;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: #68BBE3; /* Cor do thumb (polegar) */
+            border-radius: 5px; /* Borda arredondada do thumb */
+        }
+
+        &::-webkit-scrollbar-track {
+            background-color: #0E86D4; /* Cor da área de fundo da barra de rolagem */
+            border-radius: 10px;
+        }
     }
 
 `;
