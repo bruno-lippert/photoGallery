@@ -100,6 +100,11 @@ export const MainContent = styled.section`
     justify-content: center;
     align-items: center;
     
+    .loading{
+        color: #fff;
+    }
+    
+    
 `;
 
 export const PhotoGrid = styled.div`

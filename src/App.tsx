@@ -95,7 +95,7 @@ export default function App() {
       </S.UploadFile>
       <S.MainContent>
 
-        {loadingImages && <div className='teste'>Carregando...</div>}
+        {loadingImages && <div className='loading'>Carregando...</div>}
 
         {!loadingImages && photos.length > 0 && 
         <S.PhotoGrid className='photoGrid'>
