@@ -13,6 +13,8 @@ export default function App() {
   const [loadingUpload, setLoadingUpload] = useState<Boolean>(false)
   const [modal, setModal] = useState<Boolean>(false)
   const [modalText, setModalText] = useState<String>('')
+  const [selectedFileName, setSelectedFileName] = useState<string>('Escolha um arquivo');
+
 
   useEffect(() => {
     getPhotos();
@@ -71,13 +73,33 @@ export default function App() {
     }, 3000)
   }
 
+  // const displayFileName = (e) => {
+  //   const fileInput = document.getElementById('fileInput');
+  //   const fileLabel = document.getElementById('fileLabel');
+    
+  //   if (fileInput instanceof HTMLInputElement) {
+  //     if (fileInput.files.length > 0) {
+  //       setSelectedFileName(fileInput.files[0].name);
+  //     } else {
+  //       setSelectedFileName('Escolha um arquivo');
+  //     }
+  //   }
+  // }
+  
+
   return (
     <S.MainContainer className='mainContainer'>
       <S.Header className='header'>
         Galeria de Fotos
       </S.Header>
       <S.UploadFile method='POST' onSubmit={handleFormSubmit} className='uploadFile'>
-        <input type="file" name="image" />
+        <input 
+          type="file" 
+          name="image" 
+          id='fileInput' 
+          onChange={(e) => {const selectedFile = e.target.files?.[0]; setSelectedFileName(selectedFile ? selectedFile.name : 'Escolha um arquivo');
+        }}/>
+        <label htmlFor="fileInput" className="custom-file-label" id="fileLabel">{selectedFileName}</label>
         <input type="submit" value="Enviar" />
 
         {loadingUpload && <div>Enviando...</div>}

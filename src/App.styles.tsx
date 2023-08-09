@@ -6,7 +6,7 @@ export const MainContainer = styled.main`
     justify-content: flex-start;
     flex-direction: column;
     background-color: #003060;
-    height: 100vh;
+    min-height: 100vh;
 
     @media (max-width: 1200px) {
         .photoGrid {
@@ -21,7 +21,6 @@ export const MainContainer = styled.main`
     @media (max-width: 500px) {
         .photoGrid {
             grid-template-columns: repeat(1, 1fr);
-            padding-bottom: 40px;
         }
         .uploadFile {
             padding: 10px 10px;
@@ -37,15 +36,13 @@ export const Header = styled.header`
 
 export const UploadFile = styled.form`
     background-color: #055C9D;
-    height: 50px;
+    //height: 50px;
     width: 70%;
     border-radius: 10px;
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 10px;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding: 10px 15px;
     flex-wrap: wrap;
 
     input[type=submit] {
@@ -54,7 +51,30 @@ export const UploadFile = styled.form`
         background-color: #0E86D4;
         border: none;
         cursor: pointer;
+        padding: 5px;
+        color: #fff;
+
+        &:hover {
+            background-color: #68BBE3;
+        }
     }
+
+    input[type=file]{
+        display: none; /* Esconde o input original */
+    }
+
+    .custom-file-label {
+        background-color: #0E86D4;
+        color: #fff;
+        border-radius: 10px;
+        cursor: pointer;
+        padding: 5px;
+    }
+
+    .custom-file-label:hover {
+        background-color: #68BBE3;
+    }
+
 `;
 
 export const MainContent = styled.section`
