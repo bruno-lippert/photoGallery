@@ -45,6 +45,10 @@ export default function App() {
         setPhotos(newPhotoList)
         openModal()
         setModalText('Foto enviada!')
+        setSelectedFileName('Escolha um arquivo')
+        
+        const fileInput = document.getElementById('fileInput') as HTMLInputElement;
+        fileInput.value = ''; // Redefine o valor do input para vazio
       }
     } else{
       alert('Nenhum arquivo selecionado')
@@ -72,20 +76,6 @@ export default function App() {
       setModal(false)
     }, 3000)
   }
-
-  // const displayFileName = (e) => {
-  //   const fileInput = document.getElementById('fileInput');
-  //   const fileLabel = document.getElementById('fileLabel');
-    
-  //   if (fileInput instanceof HTMLInputElement) {
-  //     if (fileInput.files.length > 0) {
-  //       setSelectedFileName(fileInput.files[0].name);
-  //     } else {
-  //       setSelectedFileName('Escolha um arquivo');
-  //     }
-  //   }
-  // }
-  
 
   return (
     <S.MainContainer className='mainContainer'>
