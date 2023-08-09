@@ -1,10 +1,8 @@
 import React, { FormEvent, useEffect, useState } from 'react'
 import * as S from './App.styles'
-import { getAll } from './services/photo'
 import { Photo } from './types/Photo'
 import * as Photos from './services/photo'
 import PhotoItem from './components/PhotoItem/PhotoItem'
-import { storage } from './libs/firebase'
 import Modal from './components/Modal/Modal'
 
 export default function App() {
@@ -86,7 +84,7 @@ export default function App() {
         <input 
           type="file" 
           name="image" 
-          id='fileInput' 
+          id='fileInput'
           onChange={(e) => {const selectedFile = e.target.files?.[0]; setSelectedFileName(selectedFile ? selectedFile.name : 'Escolha um arquivo');
         }}/>
         <label htmlFor="fileInput" className="custom-file-label" id="fileLabel">{selectedFileName}</label>
@@ -97,7 +95,7 @@ export default function App() {
       </S.UploadFile>
       <S.MainContent>
 
-        {loadingImages && <div>Carregando...</div>}
+        {loadingImages && <div className='teste'>Carregando...</div>}
 
         {!loadingImages && photos.length > 0 && 
         <S.PhotoGrid className='photoGrid'>
