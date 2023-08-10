@@ -1,19 +1,21 @@
 import styled from 'styled-components';
 
+
 export const PhotoItem = styled.div`
     background-color: #055C9D;
     border-radius: 10px;
     padding: 5px;
-    width: 100%
-    margin 10px;
+    width: 25%;
+    min-width: 250px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 10px;
+    height: imgHeight ;
 
 img {
-    width: 100%;
+    max-width: 100%;
     border-radius: 10px;
-    max-height: 200px;
 }
 `;
 

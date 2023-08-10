@@ -72,8 +72,6 @@ export const UploadFile = styled.form`
         max-width: 200px;
         overflow: auto;
         white-space: nowrap;
-        scrollbar-width: none;
-        scrollbar-color: red green;
 
         &::-webkit-scrollbar {
             height: 10px;
@@ -108,7 +106,7 @@ export const MainContent = styled.section`
 `;
 
 export const PhotoGrid = styled.div`
-    display: grid;
+    display: flex;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
 `;

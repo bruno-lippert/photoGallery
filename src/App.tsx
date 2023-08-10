@@ -75,6 +75,8 @@ export default function App() {
     }, 3000)
   }
 
+const fileInput = document.getElementById('fileInput');
+
   return (
     <S.MainContainer className='mainContainer'>
       <S.Header className='header'>
@@ -85,7 +87,8 @@ export default function App() {
           type="file" 
           name="image" 
           id='fileInput'
-          onChange={(e) => {const selectedFile = e.target.files?.[0]; setSelectedFileName(selectedFile ? selectedFile.name : 'Escolha um arquivo');
+          onChange={(e) => {const selectedFile = e.target.files?.[0];
+            setSelectedFileName(selectedFile ? selectedFile.name : 'Escolha um arquivo');
         }}/>
         <label htmlFor="fileInput" className="custom-file-label" id="fileLabel">{selectedFileName}</label>
         <input type="submit" value="Enviar" />

@@ -25,3 +25,6 @@ bebe azul - #68BBE3
 Gruta Azul - #0E86D4
 Azul - #055C9D
 Navy Blue - #003060
+
+1 - abrir foto em modal e poser passarpara o lado
+2 - validar se realmente quer excluir a foto
