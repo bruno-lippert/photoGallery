@@ -106,7 +106,7 @@ export const MainContent = styled.section`
 `;
 
 export const PhotoGrid = styled.div`
-    display: flex;
+    display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
 `;
