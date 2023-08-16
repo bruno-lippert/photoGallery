@@ -29,6 +29,7 @@ export const Modal = styled.div`
         right: 5px;
         top: 5px;
         width: 10px;
+        cursor: pointer;
     }
 `;
 

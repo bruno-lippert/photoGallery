@@ -5,15 +5,16 @@ import { AiOutlineCloseCircle } from 'react-icons/ai'
 
 type Props = {
     selectedOpenPhoto: Photo
+    setOpenPhotoModal: (v: Boolean) => void
 }
 
-export default function OpenPhoto({selectedOpenPhoto}: Props) {
+export default function OpenPhoto({selectedOpenPhoto, setOpenPhotoModal}: Props) {
   return (
     <S.Container>
         <S.Modal>
             <S.ImgContainer>
 
-                <AiOutlineCloseCircle className='closeImg' />
+                <AiOutlineCloseCircle className='closeImg' onClick={() => setOpenPhotoModal(false)} />
                 
                 <S.Photo src={selectedOpenPhoto.url} alt={selectedOpenPhoto.name}></S.Photo>
 
