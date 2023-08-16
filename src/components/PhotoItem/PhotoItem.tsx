@@ -6,17 +6,20 @@ import { Photo } from '../../types/Photo'
 type Props = {
     name: string,
     url:string,
-    deletePhoto: (photo: Photo) => void
+    setDeleteModal: (v: Boolean) => void,
+    getPhotoData: (photo: Photo) => void
 }
 
-export default function PhotoItem({name, url, deletePhoto}: Props) {
+export default function PhotoItem({name, url, getPhotoData}: Props) {
   return (
     <S.PhotoItem>
         <img src={url} alt={name} />
-        <S.DeletePhoto onClick={() => deletePhoto({name:name, url:url})}>
+        <S.DeletePhoto onClick={() => getPhotoData({name: name, url: url})}>
           <GoTrash/>
         </S.DeletePhoto>
     </S.PhotoItem>
     
   )
 }
+
+// onClick={() => deletePhoto({name:name, url:url})

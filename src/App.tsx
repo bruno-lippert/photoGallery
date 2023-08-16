@@ -3,7 +3,8 @@ import * as S from './App.styles'
 import { Photo } from './types/Photo'
 import * as Photos from './services/photo'
 import PhotoItem from './components/PhotoItem/PhotoItem'
-import Modal from './components/Modal/Modal'
+import Modal from './components/Modal/Modal Inser or delete/Modal'
+import DeletePhotoModal from './components/Modal/Modal delete photo'
 
 export default function App() {
   const [photos, setPhotos] = useState<Photo[]>([])
@@ -12,11 +13,14 @@ export default function App() {
   const [modal, setModal] = useState<Boolean>(false)
   const [modalText, setModalText] = useState<String>('')
   const [selectedFileName, setSelectedFileName] = useState<string>('Escolha um arquivo');
+  const [deleteModal, setDeleteModal] = useState<Boolean>(false)
+  const [selectedPhotoDelete, setSelectedPhotoDelete] = useState<Photo>()
 
 
   useEffect(() => {
     getPhotos();
   }, [])
+
 
   const getPhotos = async () => {
     setLoadingImages(true)
@@ -30,7 +34,7 @@ export default function App() {
     const formData = new FormData(e.currentTarget)
     const file = formData.get('image') as File
 
-    if(file && file.size > 0){
+    if (file && file.size > 0) {
       setLoadingUpload(true)
       const result = await Photos.uploadFile(file)
       setLoadingUpload(false)
@@ -44,27 +48,28 @@ export default function App() {
         openModal()
         setModalText('Foto enviada!')
         setSelectedFileName('Escolha um arquivo')
-        
+
         const fileInput = document.getElementById('fileInput') as HTMLInputElement;
         fileInput.value = ''; // Redefine o valor do input para vazio
       }
-    } else{
+    } else {
       alert('Nenhum arquivo selecionado')
     }
-    
+
   }
 
   const handleDeletePhoto = async (photo: Photo) => {
-    
+
     await Photos.deletePhoto(photo)
 
     openModal()
     setModalText('Foto deletada!')
-    
+
     const newPhotos = [...photos]
     const index = newPhotos.findIndex((image) => image.name == photo.name)
     newPhotos.splice(index, 1)
     setPhotos(newPhotos)
+    setDeleteModal(false)
   }
 
   const openModal = () => {
@@ -73,9 +78,13 @@ export default function App() {
     setTimeout(() => {
       setModal(false)
     }, 3000)
+
   }
 
-const fileInput = document.getElementById('fileInput');
+  const getPhotoData = (photo: Photo) => {
+    setDeleteModal(true)
+    setSelectedPhotoDelete(photo)
+  }
 
   return (
     <S.MainContainer className='mainContainer'>
@@ -83,13 +92,14 @@ const fileInput = document.getElementById('fileInput');
         Galeria de Fotos
       </S.Header>
       <S.UploadFile method='POST' onSubmit={handleFormSubmit} className='uploadFile'>
-        <input 
-          type="file" 
-          name="image" 
+        <input
+          type="file"
+          name="image"
           id='fileInput'
-          onChange={(e) => {const selectedFile = e.target.files?.[0];
+          onChange={(e) => {
+            const selectedFile = e.target.files?.[0];
             setSelectedFileName(selectedFile ? selectedFile.name : 'Escolha um arquivo');
-        }}/>
+          }} />
         <label htmlFor="fileInput" className="custom-file-label" id="fileLabel">{selectedFileName}</label>
         <input type="submit" value="Enviar" />
 
@@ -100,18 +110,26 @@ const fileInput = document.getElementById('fileInput');
 
         {loadingImages && <div className='loading'>Carregando...</div>}
 
-        {!loadingImages && photos.length > 0 && 
-        <S.PhotoGrid className='photoGrid'>
+        {!loadingImages && photos.length > 0 &&
+          <S.PhotoGrid className='photoGrid'>
             {photos.map((item, index) => (
-          
-            <PhotoItem key={index} name={item.name} url={item.url} deletePhoto={handleDeletePhoto}/>
-            
-        ))}</S.PhotoGrid>
-            }
 
+              <PhotoItem
+                key={index}
+                name={item.name}
+                url={item.url}
+                getPhotoData={getPhotoData}
+                setDeleteModal={setDeleteModal} />
+
+            ))}</S.PhotoGrid>
+        }
 
       </S.MainContent>
-        {modal &&  <Modal text={modalText}/>}
+      {modal && <Modal text={modalText} />}
+
+      {deleteModal && selectedPhotoDelete !== undefined &&
+        <DeletePhotoModal setDeleteModal={setDeleteModal} deletePhoto={handleDeletePhoto} selectedPhotoDelete={selectedPhotoDelete} />
+      }
     </S.MainContainer>
   )
 }
