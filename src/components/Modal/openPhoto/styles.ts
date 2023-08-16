@@ -33,12 +33,16 @@ export const Modal = styled.div<Props>`
         position: absolute;
         right: 5px;
         top: 5px;
-        width: 10px;
+        height: 30px;
+        width: 30px;
         cursor: pointer;
     }
 `;
 
 export const ImgContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 
 `;
 
@@ -50,4 +54,16 @@ export const Photo = styled.img`
     width: 100%;
     height: 100%;
     border-radius: 10px;
+`;
+
+export const DeletePhoto = styled.div`
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    
+    .trash {
+        height: 20px;
+        width: 20px;
+    }
 `;

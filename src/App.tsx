@@ -140,7 +140,9 @@ export default function App() {
       {openPhotoModal && selectedPhoto !== undefined &&
         <OpenPhoto 
           selectedOpenPhoto={selectedPhoto} 
-          setOpenPhotoModal={setOpenPhotoModal}/>
+          setOpenPhotoModal={setOpenPhotoModal}
+          getPhotoData={getPhotoData}
+          setDeleteModal={setDeleteModal}/>
       }
       
     </S.MainContainer>

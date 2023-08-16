@@ -22,5 +22,3 @@ export default function PhotoItem({name, url, getPhotoData, setOpenPhotoModal, s
     
   )
 }
-
-// onClick={() => deletePhoto({name:name, url:url})
