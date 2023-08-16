@@ -5,6 +5,7 @@ import * as Photos from './services/photo'
 import PhotoItem from './components/PhotoItem/PhotoItem'
 import Modal from './components/Modal/Modal Inser or delete/Modal'
 import DeletePhotoModal from './components/Modal/Modal delete photo'
+import OpenPhoto from './components/Modal/openPhoto'
 
 export default function App() {
   const [photos, setPhotos] = useState<Photo[]>([])
@@ -14,7 +15,9 @@ export default function App() {
   const [modalText, setModalText] = useState<String>('')
   const [selectedFileName, setSelectedFileName] = useState<string>('Escolha um arquivo');
   const [deleteModal, setDeleteModal] = useState<Boolean>(false)
-  const [selectedPhotoDelete, setSelectedPhotoDelete] = useState<Photo>()
+  const [selectedPhoto, setSelectedPhoto] = useState<Photo>()
+  const [openPhotoModal, setOpenPhotoModal] = useState<Boolean>(false)
+  const [selectedOpenPhoto, setSelectedOpenPhoto] = useState<Photo>()
 
 
   useEffect(() => {
@@ -82,8 +85,7 @@ export default function App() {
   }
 
   const getPhotoData = (photo: Photo) => {
-    setDeleteModal(true)
-    setSelectedPhotoDelete(photo)
+    setSelectedPhoto(photo)
   }
 
   return (
@@ -119,7 +121,8 @@ export default function App() {
                 name={item.name}
                 url={item.url}
                 getPhotoData={getPhotoData}
-                setDeleteModal={setDeleteModal} />
+                setDeleteModal={setDeleteModal}
+                setOpenPhotoModal={setOpenPhotoModal} />
 
             ))}</S.PhotoGrid>
         }
@@ -127,9 +130,14 @@ export default function App() {
       </S.MainContent>
       {modal && <Modal text={modalText} />}
 
-      {deleteModal && selectedPhotoDelete !== undefined &&
-        <DeletePhotoModal setDeleteModal={setDeleteModal} deletePhoto={handleDeletePhoto} selectedPhotoDelete={selectedPhotoDelete} />
+      {deleteModal && selectedPhoto !== undefined &&
+        <DeletePhotoModal setDeleteModal={setDeleteModal} deletePhoto={handleDeletePhoto} selectedPhotoDelete={selectedPhoto} />
       }
+
+      {openPhotoModal && selectedPhoto !== undefined &&
+        <OpenPhoto selectedOpenPhoto={selectedPhoto}/>
+      }
+      
     </S.MainContainer>
   )
 }

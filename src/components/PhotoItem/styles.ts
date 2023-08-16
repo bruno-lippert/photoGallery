@@ -16,6 +16,7 @@ export const PhotoItem = styled.div`
 img {
     max-width: 100%;
     border-radius: 10px;
+    cursor: pointer;
 }
 `;
 

@@ -27,6 +27,3 @@ Azul - #055C9D
 Navy Blue - #003060
 
 1 - abrir foto em modal e poder passar para o lado
-2 - validar se realmente quer excluir a foto
-
-passar funcao de deletar imagem para o DeletePhotoModal
