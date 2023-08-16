@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 
+type Props ={
+    imageWidth: number,
+    imageHeight: number
+}
+
 export const Container = styled.div`
     color: #fff;
     position: fixed;
@@ -16,13 +21,13 @@ export const Container = styled.div`
     
 `;
 
-export const Modal = styled.div`
+export const Modal = styled.div<Props>`
     background-color: #003060;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-    gap: 10px;
     position: relative;
+    
+    max-width: ${props => props.imageHeight > props.imageWidth ? '50vh' : '65%'};
     
     .closeImg{
         position: absolute;
@@ -34,9 +39,7 @@ export const Modal = styled.div`
 `;
 
 export const ImgContainer = styled.div`
-    width: 60vw;
-    height: auto;
-    
+
 `;
 
 export const Teste = styled.div`
@@ -45,5 +48,6 @@ export const Teste = styled.div`
 
 export const Photo = styled.img`
     width: 100%;
+    height: 100%;
     border-radius: 10px;
 `;

@@ -131,11 +131,16 @@ export default function App() {
       {modal && <Modal text={modalText} />}
 
       {deleteModal && selectedPhoto !== undefined &&
-        <DeletePhotoModal setDeleteModal={setDeleteModal} deletePhoto={handleDeletePhoto} selectedPhotoDelete={selectedPhoto} />
+        <DeletePhotoModal 
+          setDeleteModal={setDeleteModal} 
+          deletePhoto={handleDeletePhoto} 
+          selectedPhotoDelete={selectedPhoto} />
       }
 
       {openPhotoModal && selectedPhoto !== undefined &&
-        <OpenPhoto selectedOpenPhoto={selectedPhoto} setOpenPhotoModal={setOpenPhotoModal}/>
+        <OpenPhoto 
+          selectedOpenPhoto={selectedPhoto} 
+          setOpenPhotoModal={setOpenPhotoModal}/>
       }
       
     </S.MainContainer>
